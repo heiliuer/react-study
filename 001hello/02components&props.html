@@ -23,14 +23,6 @@
     <legend>function as a Component</legend>
     <div id="root1"></div>
 </fieldset>
-
-<fieldset>
-    <legend>function as a Component</legend>
-    <div id="root2"></div>
-</fieldset>
-
-
-</body>
 <script type="text/babel">
     class Welcome extends React.Component {
         render() {
@@ -46,9 +38,12 @@
         <Welcome name={data.name}/>,
         document.getElementById('root1')
     )
-
 </script>
 
+<fieldset>
+    <legend>component extend React.Component</legend>
+    <div id="root2"></div>
+</fieldset>
 
 <script type="text/babel">
     function Welcome(props) {
@@ -64,4 +59,8 @@
         document.getElementById('root2')
     )
 </script>
+
+
+</body>
+
 </html>
