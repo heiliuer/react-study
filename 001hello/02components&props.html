@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02components&props.html</title>
+
+    <!--react-->
+    <!--dev-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!--prod-->
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>-->
+
+    <!--babel-->
+    <!--转码es7或者jsx-->
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<fieldset>
+    <legend>function as a Component</legend>
+    <div id="root1"></div>
+</fieldset>
+
+<fieldset>
+    <legend>function as a Component</legend>
+    <div id="root2"></div>
+</fieldset>
+
+
+</body>
+<script type="text/babel">
+    class Welcome extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}</h1>;
+        }
+    }
+
+    const data = {
+        name: 'heiliuer'
+    }
+
+    ReactDOM.render(
+        <Welcome name={data.name}/>,
+        document.getElementById('root1')
+    )
+
+</script>
+
+
+<script type="text/babel">
+    function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+    }
+
+    const data = {
+        name: 'heiliuer2'
+    }
+
+    ReactDOM.render(
+        <Welcome name={data.name}/>,
+        document.getElementById('root2')
+    )
+</script>
+</html>
