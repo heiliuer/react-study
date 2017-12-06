@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04handle_events.html</title>
+
+    <!--react-->
+    <!--dev-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!--prod-->
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>-->
+
+    <!--babel-->
+    <!--转码es7或者jsx-->
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<fieldset>
+    <legend>handle events</legend>
+    <div id="root1"></div>
+</fieldset>
+<script type="text/babel">
+    (function () {
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props)
+                //
+                this.state = {count: 3}
+            }
+
+            componentDidMount() {
+            }
+
+            componentWillUnmount() {
+            }
+
+            // This syntax ensures `this` is bound within handleClick.
+            // Warning: this is *experimental* syntax.
+            clear = () => {
+                this.setState({
+                    count: 0
+                })
+            }
+
+            setCount(count, e) {
+                e.preventDefault();
+                this.setState({
+                    count
+                })
+                // return false 不能拦截默认事件
+            }
+
+            action(type, e) {
+                // 尼玛 react 内部不自动绑定 this=>当前组件实例，low
+                this.setState((preState, props) => ({count: preState.count + 1}))
+            }
+
+            decreate() {
+                this.setState((preState, props) => ({count: preState.count - 1}))
+            }
+
+            decreate() {
+                this.setState((preState, props) => ({count: preState.count - 1}))
+            }
+
+            render() {
+                return <h1>
+                    <a href="" onClick={this.setCount.bind(this, 3)}>set3 </a>
+                    <a href="" onClick={e => this.setCount(4, e)}>set4 </a>
+                    <button onClick={this.decreate.bind(this)}>-</button>
+                    {this.state.count}
+                    <button onClick={() => this.increate()}>+</button>
+                    <button onClick={this.clear}>clear</button>
+                </h1>;
+            }
+        }
+
+
+        ReactDOM.render(
+            <div>
+                <Clock/>
+            </div>,
+            document.getElementById('root1')
+        )
+    })()
+</script>
+
+</body>
+
+</html>

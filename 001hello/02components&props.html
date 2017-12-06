@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>02components&props.html</title>
+    <title>1102components&props.html</title>
 
     <!--react-->
     <!--dev-->
@@ -24,20 +24,22 @@
     <div id="root1"></div>
 </fieldset>
 <script type="text/babel">
-    class Welcome extends React.Component {
-        render() {
-            return <h1>Hello, {this.props.name}</h1>;
+    (function () {
+        class Welcome extends React.Component {
+            render() {
+                return <h1>Hello, {this.props.name}</h1>;
+            }
         }
-    }
 
-    const data = {
-        name: 'heiliuer'
-    }
+        const data = {
+            name: 'heiliuer'
+        }
 
-    ReactDOM.render(
-        <Welcome name={data.name}/>,
-        document.getElementById('root1')
-    )
+        ReactDOM.render(
+            <Welcome name={data.name}/>,
+            document.getElementById('root1')
+        )
+    })()
 </script>
 
 <fieldset>
@@ -46,20 +48,22 @@
 </fieldset>
 
 <script type="text/babel">
-    function Welcome(props) {
-        return <h1>Hello, {props.name}</h1>;
-    }
 
-    const data = {
-        name: 'heiliuer2'
-    }
+    (function () {
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
 
-    ReactDOM.render(
-        <Welcome name={data.name}/>,
-        document.getElementById('root2')
-    )
+        const data = {
+            name: 'heiliuer2'
+        }
+
+        ReactDOM.render(
+            <Welcome name={data.name}/>,
+            document.getElementById('root2')
+        )
+    })()
 </script>
-
 
 </body>
 

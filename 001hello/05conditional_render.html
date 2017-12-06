@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04handle_events.html</title>
+
+    <!--react-->
+    <!--dev-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!--prod-->
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>-->
+
+    <!--babel-->
+    <!--转码es7或者jsx-->
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<fieldset>
+    <legend>handle events</legend>
+    <div id="root1"></div>
+</fieldset>
+<script type="text/babel">
+    (function () {
+        class Greeting extends React.Component {
+            render() {
+                if (this.props.isLoggedIn) {
+                    return <h1>GuestGreeting</h1>;
+                }
+                return <h1>UserGreeting</h1>;
+            }
+        }
+
+        class Login extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    logged: false
+                }
+            }
+
+            handlerChange = (e) => {
+                this.setState({
+                    logged: e.target.value
+                })
+            }
+
+            render() {
+                return <div>
+                    <Greeting isLoggedIn={this.logged}/>
+                    <input type="checkbox" value={logged} onChange={this.handlerChange}/>
+                </div>
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <Greeting isLoggedIn={false}/>
+            </div>,
+            document.getElementById('root1')
+        )
+    })()
+</script>
+
+</body>
+
+</html>
