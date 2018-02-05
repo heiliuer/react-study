@@ -17,6 +17,7 @@
     (function () {
         class Welcome extends React.Component {
             render() {
+                console.log('render this.dom:',this.dom)
                 return <h1>Hello, {this.props.name}</h1>;
             }
         }
